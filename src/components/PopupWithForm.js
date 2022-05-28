@@ -22,7 +22,6 @@ function PopupWithForm({isOpen, onClose, name, title, buttonCaption='Сохра�
             type="submit"
             className="button button_type_submit popup__button"
             name={`${name}-submit`}
-            type="submit"
           >
             {buttonCaption}
           </button>

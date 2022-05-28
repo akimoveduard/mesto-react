@@ -5,7 +5,7 @@ function ImagePopup({isOpen, onClose, card}) {
       <div className="mesto">
         <button className="popup__close" type="button" onClick={onClose}></button>
         <figure className="mesto__figure">
-          <img className="mesto__image" src={card.link} />
+          <img className="mesto__image" src={card.link} alt={card.name} />
           <figcaption className="mesto__caption">{card.name}</figcaption>
         </figure>
       </div>
