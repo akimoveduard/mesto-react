@@ -12,7 +12,7 @@ function Main({cards, userData, onEditProfile, onEditAvatar, onAddPlace, onCardC
     setUserName(userData.name);
     setUserDescription(userData.about);
     setUserAvatar(userData.avatar);
-  })
+  }, [userData.name, userData.about, userData.avatar])
   
   return (
     <div className="content">
