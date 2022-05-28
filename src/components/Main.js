@@ -1,18 +1,34 @@
 import React from "react";
+import api from "../utils/Api";
 import Card from "./Card";
 import noPhoto from "../images/nophoto.png";
 
-function Main({cards, userData, onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
+function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
 
   const [userName, setUserName] = React.useState(null);
   const [userDescription, setUserDescription] = React.useState(null);
   const [userAvatar, setUserAvatar] = React.useState(null);
 
+  const [cards, setCards] = React.useState([]);
+
   React.useEffect(() => {
-    setUserName(userData.name);
-    setUserDescription(userData.about);
-    setUserAvatar(userData.avatar);
-  }, [userData.name, userData.about, userData.avatar])
+    Promise.all([
+      api.getCards(),
+      api.getUserInfo()
+    ])
+      .then((result) => {
+        const [cardsData, userData] = result;
+
+        setCards(cardsData);
+
+        setUserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar);
+      })
+      .catch ((error) => {
+        console.log(error)
+      })
+  }, []);
   
   return (
     <div className="content">
