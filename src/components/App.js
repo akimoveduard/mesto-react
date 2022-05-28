@@ -56,7 +56,7 @@ function App() {
       .catch ((error) => {
         console.log(error)
       })
-  }, []);
+  });
 
   return (
     <div className="page__content">

@@ -14,7 +14,7 @@ function Card({card, onCardClick}) {
         <h2 className="card__caption">{card.name}</h2>
         <figure className="card__likes">
           <button className="button button_type_like" type="button"></button>
-          <figcaption className="card__likes-counter" aria-label="Количество лайков"></figcaption>
+          <figcaption className="card__likes-counter" aria-label="Количество лайков">{card.likes.length}</figcaption>
         </figure>
       </div>
     </li>
