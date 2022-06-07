@@ -2,59 +2,60 @@ import React from "react";
 import api from "../utils/Api";
 import Card from "./Card";
 import noPhoto from "../images/nophoto.png";
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
 
-  const [userName, setUserName] = React.useState(null);
-  const [userDescription, setUserDescription] = React.useState(null);
-  const [userAvatar, setUserAvatar] = React.useState(null);
+  const currentUser = React.useContext(CurrentUserContext);
 
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    Promise.all([
-      api.getCards(),
-      api.getUserInfo()
-    ])
+      api.getCards()
       .then((result) => {
-        const [cardsData, userData] = result;
-
-        setCards(cardsData);
-
-        setUserName(userData.name);
-        setUserDescription(userData.about);
-        setUserAvatar(userData.avatar);
+        setCards(result);
       })
       .catch ((error) => {
         console.log(error)
       })
   }, []);
-  
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(user => user._id === currentUser._id);
+    api.changeLikeCardStatus(card, !isLiked)
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+      });
+  }
+ 
   return (
     <div className="content">
       <section className="profile" aria-label="Профиль">
         <div className="profile__avatar-wrapper">
-          <img className="profile__avatar" src={(userAvatar === undefined || userAvatar === null) ? noPhoto : userAvatar} alt="Аватар пользователя" />
+          <img className="profile__avatar" src={(currentUser.avatar === undefined || currentUser.avatar === null) ? noPhoto : currentUser.avatar} alt="Аватар пользователя" />
           <button className="button button_type_avatar" name="avatar-button-open" type="button" onClick={onEditAvatar}></button>
         </div>
         <div className="profile__info">
           <div className="profile__title">
-            <h1 className="profile__username">{(userName === undefined || userName === null) ? ' ' : userName}</h1>
+            <h1 className="profile__username">{(currentUser.name === undefined || currentUser.name === null) ? ' ' : currentUser.name}</h1>
             <button className="button button_type_edit" name="profile-button-open" type="button" onClick={onEditProfile}></button>
           </div>
-          <p className="profile__about">{(userDescription === undefined || userDescription === null) ? ' ' : userDescription}</p>
+          <p className="profile__about">{(currentUser.about === undefined || currentUser.about === null) ? ' ' : currentUser.about}</p>
         </div>
         <button className="button button_type_add" name="addcard-button-open" type="button" onClick={onAddPlace}></button>
       </section>
       <section className="photo-grid" aria-label="Карточки мест">
         <ul className="photo-grid__list">
-          {cards.map((card) => (
-            <Card
-              key={card._id}
-              card={card}
-              onCardClick={onCardClick}
-            />
-          ))}
+          <CurrentUserContext.Provider value={currentUser}>
+            {cards.map((card) => (
+              <Card
+                key={card._id}
+                card={card}
+                onCardClick={onCardClick}
+                onCardLike={handleCardLike}
+              />
+            ))}
+          </CurrentUserContext.Provider>
         </ul>
       </section>
     </div>

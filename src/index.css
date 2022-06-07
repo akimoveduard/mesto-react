@@ -26,6 +26,9 @@
 @import url(./blocks/button/_type/button_type_submit.css);
 @import url(./blocks/button/_type/button_type_avatar.css);
 
+@import url(./blocks/button/_visible/button_visible.css);
+@import url(./blocks/button/_hidden/button_hidden.css);
+
 @import url(./blocks/photo-grid/__list/photo-grid__list.css);
 
 @import url(./blocks/card/card.css);
