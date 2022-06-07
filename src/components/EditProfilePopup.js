@@ -14,12 +14,12 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     setUserDescription(currentUser.about);
   }, [currentUser]);
 
-  function handleChangeName(e) {
-    setUserName(e.target.value);
+  function handleChangeName(event) {
+    setUserName(event.target.value);
   }
 
-  function handleChangeDescription(e) {
-    setUserDescription(e.target.value);
+  function handleChangeDescription(event) {
+    setUserDescription(event.target.value);
   }
 
   function handleSubmit(event) {
