@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Учебный проект «Mesto Russia»
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Учебный SPA, выполненный во время учебы в [https://practicum.yandex.ru/](Яндекс.Практикуме) при изучении библиотеки React. 
 
-## Available Scripts
+*Ссылка на сайт на GitHub-Pages:* https://akimoveduard.github.io/mesto-react/
 
-In the project directory, you can run:
+## Функциональность и описание сайта
+
+Одностраничный сайт с возможностью делиться изображениями.
+- Можно делиться с другими пользователями изображениями и удалять их.
+- Можно лайкать свои и чужие карточки.
+- Можно менять данные профиля и аватар.
+- Все данные сохраняются на сервере.
+
+## Технологии:
+<p><img src="https://img.shields.io/badge/html5-%23E34F26.svg" height="24" alt="HTML5"> <img src="https://img.shields.io/badge/css3-%231572B6.svg" height="24" alt="CSS3"> <img src="https://img.shields.io/badge/javascript-%23323330.svg" height="24" alt="JavaScript"> <img src="https://img.shields.io/badge/react-%2320232a.svg" height="24" alt="React"> <img src="https://img.shields.io/badge/node.js-6DA55F" height="24" alt="Node.js"> <img src="https://img.shields.io/badge/webpack-%238DD6F9.svg" height="24" alt="Webpack"> <img src="https://img.shields.io/badge/git-%23F05033.svg" height="24" alt="Git"> <img src="https://img.shields.io/badge/github-%23121011.svg" height="24" alt="GitHub"></p>
+
+* HTML
+* CSS
+* Git
+* БЭМ-методология
+* JavaScript
+* React
+* Node.js
+* Webpack
+
+## Инструкция по установке
+```
+git clone https://github.com/akimoveduard/mesto-react.git
+
+cd mesto-react
+npm instal wepback --save-dev
+npm run build
+```
+
+## Скрипты
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Запускает приложение в режиме `development`. Открывается по адресу [http://localhost:3000](http://localhost:3000).
+Перезагружается, когда появляются изменения в коде.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Собирает приложение в папку `build`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Системные требования:
+* Node.js ^17.1.0
+* Npm ^8.4.0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Статус проекта
+В разработке.
