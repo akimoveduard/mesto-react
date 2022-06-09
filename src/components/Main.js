@@ -3,10 +3,18 @@ import Card from "./Card";
 import noPhoto from "../images/nophoto.png";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Main({onEditProfile, onEditAvatar, onAddPlace, cards, onCardClick, onCardLike, onCardDelete}) {
-
+function Main({
+  onEditProfile,
+  onEditAvatar,
+  onAddPlace,
+  cards,
+  onCardClick,
+  onCardLike,
+  onCardDelete,
+}) {
+  
   const currentUser = React.useContext(CurrentUserContext);
- 
+
   return (
     <div className="content">
       <section className="profile" aria-label="Профиль">

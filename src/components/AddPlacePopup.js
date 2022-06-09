@@ -1,10 +1,15 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function AddPlacePopup({isOpen, onClose, onAddPlace}) {
+function AddPlacePopup({
+  isOpen,
+  onClose,
+  onAddPlace,
+  isLoading
+}) {
 
-  const [name, setName] = React.useState('');
-  const [link, setLink] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [link, setLink] = React.useState("");
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -16,14 +21,19 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    
+
     onAddPlace({
       name: name,
-      link: link
+      link: link,
     });
-    setName('');
-    setLink('');
   }
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setName('');
+      setLink('');
+    }
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -31,6 +41,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
       onClose={onClose}
       onSubmit={handleSubmit}
       onAddPlace={onAddPlace}
+      isLoading={isLoading}
       name="addcard"
       title="Новое место"
       buttonCaption="Создать"
