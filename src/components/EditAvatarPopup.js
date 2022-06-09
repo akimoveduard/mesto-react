@@ -1,18 +1,23 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
+function EditAvatarPopup({
+  isOpen,
+  onClose,
+  onUpdateAvatar,
+  isLoading
+}) {
 
-  const urlAvatar = React.useRef('');
+  const urlAvatar = React.useRef("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    
-    onUpdateAvatar(
-      urlAvatar.current.value
-    );
-    urlAvatar.current.value = '';
+    onUpdateAvatar(urlAvatar.current.value);
   }
+
+  React.useEffect(() => {
+    if (isOpen) urlAvatar.current.value = '';
+  },[isOpen]);
 
   return (
     <PopupWithForm
@@ -20,6 +25,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
       onClose={onClose}
       onSubmit={handleSubmit}
       onUpdateAvatar={onUpdateAvatar}
+      isLoading={isLoading}
       name="avatar"
       title="Обновить аватар"
     >
@@ -36,7 +42,6 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
       <span className="popup__error avatar-input-error"></span>
     </PopupWithForm>
   );
-
 }
 
 export default EditAvatarPopup;

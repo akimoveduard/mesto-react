@@ -27,6 +27,8 @@ function App() {
 
   const [isImagePopupOpen, setImagePopupOpen] = React.useState(false);
 
+  const [isLoading, setIsLoading] = React.useState(false);
+
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
   }
@@ -53,25 +55,33 @@ function App() {
   }
 
   function handleUpdateUser(user) {
+    setIsLoading(true);
     api.updateProfile(user.name, user.about)
       .then((user) => {
         setCurrentUser(user);
+        closeAllPopups();
       })
       .catch((error) => {
         console.log(error)
-      })      
-    closeAllPopups();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   function handleUpdateAvatar(url) {
+    setIsLoading(true);
     api.updateAvatar(url)
     .then((user) => {
       setCurrentUser(user);
+      closeAllPopups();
     })
     .catch((error) => {
       console.log(error)
     })
-    closeAllPopups();
+    .finally(() => {
+      setIsLoading(false);
+    })
   }
 
   function handleCardLike(card) {
@@ -82,7 +92,7 @@ function App() {
       })
       .catch((error) => {
         console.log(error)
-      });
+      })
   }
 
   function handleCardDelete(card) {
@@ -96,14 +106,18 @@ function App() {
   }
 
   function handleAddPlaceSubmit(card) {
+    setIsLoading(true);
     api.addCard(card.name, card.link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
+        closeAllPopups();
       })
       .catch((error) => {
         console.log(error)
-      });
-      closeAllPopups();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   React.useEffect(() => {
@@ -139,16 +153,19 @@ function App() {
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
+          isLoading={isLoading}
         />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
+          isLoading={isLoading}
         />
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlace={handleAddPlaceSubmit}
+          isLoading={isLoading}
         />
         <ImagePopup
           isOpen={isImagePopupOpen}

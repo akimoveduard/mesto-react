@@ -1,4 +1,8 @@
-function ImagePopup({isOpen, onClose, card}) {
+function ImagePopup({
+  isOpen,
+  onClose,
+  card
+}) {
 
   return (
     <section className={`popup popup_type_mesto ${isOpen && 'popup_opened'}`} aria-label="Фото места">
